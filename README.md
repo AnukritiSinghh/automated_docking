@@ -1,5 +1,7 @@
+# To Execute
+
 ```
-git clone <our repo>
+git clone https://github.com/abhinavsagar/ENPM_673_project5
 mkdir ~/parking_ws/src
 cd parking_ws
 catkin_make
