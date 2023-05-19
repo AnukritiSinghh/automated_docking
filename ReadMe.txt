@@ -44,14 +44,21 @@ in terminal3: source ~/catkin_ws/devel/setup.bash
 # in terminal3: source ~/catkin_ws/devel/setup.bash 
 #               rosrun autodock_core obstacle_avoidance.py 
 
-Link to Videos:
+Link to our Videos:
 
-1) https://drive.google.com/file/d/1kFU0z21jPpkfyPOoTPXfUItolWa388N1/view?resourcekey
+Result 1: The camera is used to make decision to go left or right, when the cam could see all the aruco markers, it will stop turning and wait for command "Ctrl + C" to start. if docking failed, run the script again
+1) https://drive.google.com/file/d/1gU-ykN2ErM0vu0zqHCw8-xqayuQUUNXK/view?usp=share_link
 
-2) https://drive.google.com/file/d/1Ol7UcWrtiSVMqgEBOMlOkmFY94aZXwTe/view?resourcekey
+Result 2: Lidar Detection stop and Docking
+2) https://drive.google.com/file/d/1kFU0z21jPpkfyPOoTPXfUItolWa388N1/view?resourcekey
 
-3) https://drive.google.com/file/d/1zNuYmxqIYEmJy1BLkppNRuWSl--_u3Bd/view?resourcekey
+Result 3: Camera Left Turn
+3) https://drive.google.com/file/d/1Ol7UcWrtiSVMqgEBOMlOkmFY94aZXwTe/view?resourcekey
 
-4) https://drive.google.com/file/d/1rWiEAp69topNlgG3cYIZ0w3uAK5v127W/view?resourcekey
+Hardware
+4) https://drive.google.com/file/d/1zNuYmxqIYEmJy1BLkppNRuWSl--_u3Bd/view?resourcekey
+
+RVIZ Hardware
+5) https://drive.google.com/file/d/1rWiEAp69topNlgG3cYIZ0w3uAK5v127W/view?resourcekey
 
 
