@@ -101,11 +101,11 @@ class ObstacleAvoidance:
             if area1 > 0 or area2 > 0:
                 if area1 > area / 2:
                     print("Right")
-                    self.move.angular.z = -1.2
+                    self.move.angular.z = -1.5
                     self.move.linear.x = 0.0
                 else:
                     print("Left")
-                    self.move.angular.z = 1.2
+                    self.move.angular.z = 1.5
                     self.move.linear.x = 0.0
 
                 self.start_laser = True
@@ -118,12 +118,12 @@ class ObstacleAvoidance:
                 self.move.linear.x = 0.0
 
         else:
-            print("Contours not found, stopping the robot")
+            print("Contours not found")
             if(self.marker_detected == False):
                 self.start_laser = True
                 self.start_image = False
-                self.move.angular.z = 0.0
-                self.move.linear.x = 0.0
+                self.move.angular.z = 0.1
+                self.move.linear.x = 0.1
                 self.pub.publish(self.move)
 
         # self.move.linear.x = 0.0
