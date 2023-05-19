@@ -16,30 +16,29 @@ class ObstacleAvoidance:
         self.marker_detected = False
         self.vel = 0.0
         self.start_laser = True
-        self.start_image = False
+        self.start_image = True
         self.move = Twist()
 
         rospy.init_node('obstacle_avoidance_node')  # Initializes a node
 
         self.pub = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
         self.sub_laser = rospy.Subscriber("/scan", LaserScan, self.laser_callback)
-        # self.sub_aruco = rospy.Subscriber("/fiducial_vertices", FiducialArray, self.aruco_callback)
+        self.sub_aruco = rospy.Subscriber("/fiducial_vertices", FiducialArray, self.aruco_callback)
         self.sub_image = rospy.Subscriber("/camera/rgb/image_raw", Image, self.image_callback, queue_size=1)
-
-    # def calculate_distance(self,area):
-    #     reference_area = 100.0  # Known area of the fiducial at a reference distance
-    #     reference_distance = 1.0  # Reference distance at which the fiducial is observed with the reference area
-    #     estimated_distance = reference_distance * (reference_area / area) ** 0.5
-    #     return estimated_distance
 
     def aruco_callback(self, msg):
         # for i in range(len(msg.fiducials)):
         #     print(msg.fiducials[i].fiducial_id)
-        if len(msg.fiducials) == 3 and msg.fiducials[1].size == 0.6:
+        # print(len(msg.fiducials))
+        if len(msg.fiducials) == 3:
             self.marker_detected = True
             self.move.linear.x = 0.0
             self.move.angular.z = 0.0
             self.pub.publish(self.move)
+            self.start_laser = False
+            self.start_image = False
+            rospy.loginfo("press Ctrl+C to start docking")
+
 
     def laser_callback(self, scan_msg):
         if not self.start_laser:
@@ -61,7 +60,8 @@ class ObstacleAvoidance:
             self.move.angular.z = 0.0
         else:
             self.move.linear.x = 0.0
-            # self.start_image = True
+            self.start_image = True
+            
             # if not self.start_image:
             #     self.start_image = True
             #     return
@@ -102,9 +102,11 @@ class ObstacleAvoidance:
                 if area1 > area / 2:
                     print("Right")
                     self.move.angular.z = -1.2
+                    self.move.linear.x = 0.0
                 else:
                     print("Left")
                     self.move.angular.z = 1.2
+                    self.move.linear.x = 0.0
 
                 self.start_laser = True
                 self.start_image = False
@@ -113,16 +115,19 @@ class ObstacleAvoidance:
                 self.start_laser = True
                 self.start_image = False
                 self.move.angular.z = 0.0
+                self.move.linear.x = 0.0
 
         else:
             print("Contours not found, stopping the robot")
             if(self.marker_detected == False):
                 self.start_laser = True
                 self.start_image = False
-                self.move.angular.z = -0.1
+                self.move.angular.z = 0.0
+                self.move.linear.x = 0.0
+                self.pub.publish(self.move)
 
-        self.move.linear.x = 0.0
-        self.pub.publish(self.move)
+        # self.move.linear.x = 0.0
+        # self.pub.publish(self.move)
 
 
     def run(self):
