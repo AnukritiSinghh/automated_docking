@@ -43,3 +43,15 @@ in terminal3: source ~/catkin_ws/devel/setup.bash
 # in terminal2: rostopic pub /autodock_action/goal autodock_core/AutoDockingActionGoal {} --once
 # in terminal3: source ~/catkin_ws/devel/setup.bash 
 #               rosrun autodock_core obstacle_avoidance.py 
+
+Link to Videos:
+
+1) https://drive.google.com/file/d/1kFU0z21jPpkfyPOoTPXfUItolWa388N1/view?resourcekey
+
+2) https://drive.google.com/file/d/1Ol7UcWrtiSVMqgEBOMlOkmFY94aZXwTe/view?resourcekey
+
+3) https://drive.google.com/file/d/1zNuYmxqIYEmJy1BLkppNRuWSl--_u3Bd/view?resourcekey
+
+4) https://drive.google.com/file/d/1rWiEAp69topNlgG3cYIZ0w3uAK5v127W/view?resourcekey
+
+
